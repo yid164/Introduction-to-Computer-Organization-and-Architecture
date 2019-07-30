@@ -1,0 +1,43 @@
+1. MIPS 32 指令集与编程
+
+	MIPS 32 指令集
+		以经典的嵌入式处理器MIPS 4kc系列作为参照
+	E.g. 
+		Add		Add rd, rs, rt				rd <- rs + rt			执行32位整数加法； 如果补码运算溢出则产生异常
+		ADDI	ADDI rt, rs, immediate		rt <- rs + immediate	16位带符号立即数符号扩展后执行加法； 如果补码运算溢出则产生异常
+		ADDU	ADDU rd, rs, rt				rd <- rs + rt			不产生异常
+		
+		CLO		CLO rd, rs					rd <- rs 前导1的个数		
+		CLZ		CLZ rd, rs					rd <- rs 前导0的个数
+		
+		MUL		MUL rd, rs, rt				rd <- rs * rt			32位整数相乘，结果只保留低32位； Hi／Lo寄存器无定义
+		MULT	MULT rs, rt					(Hi, Lo) <- rs * rt		32位带符号整数相乘， 结果存于Hi／Lo寄存器
+		MULTU	MULTU rs, rt				(HI, LO) <- rs * rt		32位无符号数相乘， 结果存于HI／LO寄存器
+		DIV		DIV rs, rt 					(HI, LO) <- rs/rt		32位带符号数相除， 不会产生算数异常 （即便除以0）
+		DIVU	DIVU rs, rt					(HI, LO) <- rs/rt		32位无符号数相除， 不会产生算数异常 （即便除以0）
+		
+		MADD	MADD rs, rt 				(HI, LO) <-(HI,LO) +(rs * rt)	32位带符号整数乘加
+		MADDU
+		MSUB
+		MsUBU
+		
+		SLT		SLT rd, rs, rt				rd <- (rs<rt)			比较两个带符号数32位整数，比较结果 （1或者0存入rd寄存器）
+		
+		
+2. MIPS 分支跳转
+	分支（branch）和跳转 （jump) 的指令
+	
+	BEQ:	Branch on Equal
+	EGEZ:	Branch on Greater than or Equal to zero
+	BEGZAL:	Branch on Greater than or Equal to zero and link
+	BGTZ: 	Branch on grater than zero
+	BLEZ: 	Branch on less than or equal to zero
+	BLTZ: 	Branch on less than zero
+	BLTZAL: Branch on less than zero and link
+	BNE:	Branch on not equal
+	J:		Jump
+	JAL:	Jump and link
+	JALR:	Jump and link register
+	JR:		Jump register
+	
+	NOP:（伪指令） No operation (SLL, r0, r0, 0)
