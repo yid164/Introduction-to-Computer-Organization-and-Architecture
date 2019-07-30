@@ -1,0 +1,122 @@
+\documentclass[12pt]{article}
+\usepackage{amsmath,amsthm,amssymb,amsfonts}
+\usepackage{enumerate}
+\newenvironment{solution}
+{\begin{center}
+        \begin{tabular}
+		{|p{0.9\textwidth}|}
+        \hline\\
+    \textbf{Solution: }\\
+	}
+    { 
+        \\\\\hline
+    \end{tabular} 
+    \end{center}
+    }
+\newcounter{problem}[section]
+\newenvironment{problem}[1][]{\refstepcounter{problem}
+\par\medskip
+   \noindent \textbf{Problem~\theproblem.\\ #1} \rmfamily}{\medskip}
+
+\begin{document}
+
+\title{\textbf{Assignment 1}}
+\author{CMPT 215\\
+\textbf{Due}: July $13^{th}$, $2017$} 
+\date{}
+
+\maketitle 
+\textbf{Total: 50 marks}
+\begin{problem}
+    (8 marks) Define and write the equations for the following metrics in terms of instruction count ($I$), number of clock cycles ($C$) and clock cycle time ($T$).
+    \begin{enumerate}[i]
+        \item Frequency
+        \item CPI
+        \item MIPS
+        \item CPU execution time
+    \end{enumerate}
+    
+\end{problem}
+\clearpage
+\begin{table}[!h]
+        \label{table:1}
+        \begin{tabular}{|p{3cm}||p{2cm}|p{2cm}|p{2cm}|}
+            \hline
+            \multicolumn{4}{|c|}{Computer System Metrics}
+            \\
+            \hline
+            Instruction type & CPI & Frequency & Clock cycle($ns$)\\
+            \hline
+            A & $1$ & $20\%$ & $0.5$ \\
+            \hline
+            B & $2$ & $40\%$ & $0.5$ \\
+            \hline
+            C & $3$ & $30\%$ & $0.5$ \\
+            \hline
+            D & $4$ & $10\%$ & $0.5$ \\  
+            \hline
+        \end{tabular}
+    \end{table}
+
+    \begin{problem}
+(6 marks) Calculate the following performance metrics using the given values in the table above and showing all \textbf{steps and units}.
+\begin{enumerate}[i]
+    \item CPI 
+    \item MIPS 
+    \item CPU execution time for $500$ instructions
+\end{enumerate}
+\end{problem}
+
+\begin{problem}
+    (4 marks) Suppose it is possible to third ($1/3$) the number of type C instructions in the table above, what will be the new CPI value?
+\end{problem}
+
+\begin{problem}
+    (4 marks) Describe and write the equation for \textit{Ambdals law}.
+\end{problem}
+\clearpage
+\begin{problem}
+    (10 marks) Convert the following integers into binary and hexadecimal.
+    \begin{enumerate}[i]
+        \item $27$
+        \item $400$
+        \item $88$
+        \item $10$
+        \item $99$
+    \end{enumerate}
+\end{problem}
+
+\begin{problem}
+    (5 marks) Convert the following binary to their integer values.
+    \begin{enumerate}[i]
+        \item 1001
+        \item 101110
+        \item 111001
+        \item 01100011
+        \item 01110010
+    \end{enumerate}
+\end{problem}
+
+\begin{problem}
+    (3 marks) What is the difference between 1's compliment and 2's compliment?
+    When are they used and what applications are they used in?
+\end{problem}
+
+\begin{problem}
+    (10 marks) Convert the following to 8-bit 1's compliment and 2'compliment.
+    \begin{enumerate}[i]
+        \item 20
+        \item 0
+        \item -100
+        \item 127
+        \item -127
+    \end{enumerate}
+\end{problem}
+
+
+\textbf{Bonus:}
+\begin{problem}
+    (3 marks) Name the top three fastest machines in the world and mention which benchmark was used to test their performance. 
+\end{problem}
+
+\end{document}
