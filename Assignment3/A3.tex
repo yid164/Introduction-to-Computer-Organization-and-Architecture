@@ -1,0 +1,122 @@
+\documentclass[12pt]{article}
+\usepackage{amsmath,amsthm,amssymb,amsfonts}
+\usepackage{enumerate}
+\usepackage{listings}
+\usepackage{booktabs}
+\newenvironment{solution}
+{\begin{center}
+        \begin{tabular}
+		{|p{0.9\textwidth}|}
+        \hline\\
+    \textbf{Solution: }\\
+	}
+    { 
+        \\\\\hline
+    \end{tabular} 
+    \end{center}
+    }
+\newcounter{problem}[section]
+\newenvironment{problem}[1][]{\refstepcounter{problem}
+\par\medskip
+   \noindent \textbf{Problem~\theproblem.\\ #1} \rmfamily}{\medskip}
+
+\begin{document}
+
+\title{\textbf{Assignment 3}}
+\author{CMPT 215\\
+\textbf{Due}: Aug $10^{th}$, $2017$} 
+
+\maketitle 
+\textbf{Total: 35}\\
+\textbf{Please show all your work to get full marks}
+\begin{problem}
+(4 marks) Describe the modifications to the single clock cycle datapath that would be needed to implement the jal instruction and give the control signal setting that would be required for this instruction. 
+\end{problem}
+
+
+\begin{problem}
+  (4 marks) Determine the clock cycle at which each of the instructions in the sequence given below would be completed, assuming the 5-stage pipeline without forwarding, and numbering the clock cycle at which the first of the instructions is fetched as clock cycle 1. Assume that if one instruction reads a register during the same clock cycle as another instruction is writing it, the new value will be read. Do not reorder the instructions. Instructions are fetched and executed exactly in
+  the order given below, with the pipeline stalling if necessary.
+   \begin{lstlisting}[language=bash]
+   lw $s1,0($s2)
+   lw $t1,0($s1)
+   addi $s3,$s1,4
+   addi $s1,$t1,-1
+   add  $t0,$s3,$s1
+   \end{lstlisting}
+\end{problem}
+\begin{problem}
+(4 marks) Repeat problem 2 but now assume forwarding. 
+\end{problem}
+\clearpage
+\begin{problem}
+    (9 marks) Consider the following code fragments:
+   \begin{lstlisting}[language=bash]
+              li   $s1,1
+              li   $s3,6
+              add  $s4,$zero,$zero
+outer_loop:   add  $s2,$zero,$zero
+inner_loop:   addi $s2,$s2,1
+              mul  $t0,$s2,$s1
+              add  $s4,$s4,St0
+inner_test    bne  $s2,$s1,inner_loop
+              addi $s1,$s1,1
+              bne  $s1,$s3,outer_loop
+   \end{lstlisting}
+   This code simple runs the inner loop $i+1$ times each time, with $i$ starting at 1, going until 5, meaning the \textbf{inner\_test} will be executed $1+2+3+4+5=15$ times.
+   Give the branch prediction accuracy for \textbf{inner\_test} for the following schemes:
+   \begin{enumerate}[i]
+     \item Branch prediction of always \textbf{Not Taken}
+     \item 1-bit branch prediction of starting at \textbf{Not Taken}
+     \item 2-bit branch prediction of starting at \textbf{Strongly Not Taken}
+     \end{enumerate}
+ 
+\end{problem}
+\begin{problem}
+  (4 marks)  Suppose that a program does read operations on the following memory addresses \textbf{96, 508}. Give the number of the memory block that each of these addresses belongs to, for each of the following memory block sizes. Remember the above addresses are byte addressed. 
+  \begin{enumerate}[i]
+    \item block size of one word (4 bytes)
+    \item block size of four words (16 bytes)
+    \end{enumerate}
+  \end{problem}
+\clearpage
+\begin{problem}
+(8 marks) Give the position (or set) in the cache that would be checked on each of the read operations of the above question, for each of the following caches. 
+\begin{enumerate}[i]
+  \item Direct-mapped cache with total capacity of 16 one-word blocks
+  \item Direct-mapped cache with total capacity of 4 four-word blocks
+  \item 4-way set-associative cache with total capacity of 16 one-word blocks
+  \item 2-way set-associative cache with total capacity of 4 four-word blocks 
+\end{enumerate}
+
+\end{problem}
+
+\begin{problem}
+    (2 marks) Consider a computer system in which a physical page number is 24 bits, a virtual page number is 52 bits, and a virtual address is 64 bits. What is the maximum amount of physical memory, in GiB, that this system could have?
+\end{problem}
+
+\noindent
+\textbf{Bonus:}\\
+\begin{problem}
+  (5 marks) Given two threads that share memory:
+   \begin{lstlisting}[language=bash]
+    int a = 0;
+    int b = 4;
+    int c = 0;
+    int d = 0;
+    int z = 0 
+
+   
+   Thread 1:                 Thread 0:
+    c = a+b;                 d = a+b;
+    c = 0;                   z = a+d;
+    a = d+b;                 a = c+d;
+                     
+    end
+   \end{lstlisting}
+   What is the values of each variable at the end of the program?
+   What is the technical term for what is going on?
+   What are two ways to keep mutual exclusion?
+
+\end{problem}
+\end{document}
