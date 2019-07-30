@@ -1,0 +1,128 @@
+\documentclass[12pt]{article}
+\usepackage{amsmath,amsthm,amssymb,amsfonts}
+\usepackage{enumerate}
+\usepackage{listings}
+\usepackage{booktabs}
+\newenvironment{solution}
+{\begin{center}
+        \begin{tabular}
+		{|p{0.9\textwidth}|}
+        \hline\\
+    \textbf{Solution: }\\
+	}
+    { 
+        \\\\\hline
+    \end{tabular} 
+    \end{center}
+    }
+\newcounter{problem}[section]
+\newenvironment{problem}[1][]{\refstepcounter{problem}
+\par\medskip
+   \noindent \textbf{Problem~\theproblem.\\ #1} \rmfamily}{\medskip}
+
+\begin{document}
+
+\title{\textbf{Assignment 2}}
+\author{CMPT 215\\
+\textbf{Due}: July $27^{th}$, $2017$\\
+\textbf{Total: 65 marks}}
+\date{}
+\maketitle 
+
+\begin{problem}
+    (8 marks) Add the following, indicate if there is a type of overflow or carry over for a 8 bit binary. 
+    \begin{enumerate}[i]
+        \item $12 + 10$
+        \item $0100 1100 + 0011 1110$
+        \item $1001 0000 + 1111 1111$
+        \item $4 + -13$
+    \end{enumerate}
+\end{problem}
+
+
+\begin{problem}
+    (8 marks) Subtract the following, indicate if there is a type of overflow or carry over for a 8 bit binary. 
+    \begin{enumerate}[i]
+        \item $0011 1010 - 0001 1111$
+        \item $9 - 10$
+        \item $0000 1010 - 1111 1111$
+        \item $4 - 13$
+    \end{enumerate}
+\end{problem}
+\clearpage
+\begin{problem}
+    (12 marks) Multiply the following, indicate if there is a type of overflow or carry over for a 8 bit binary. 
+    \begin{enumerate}[i]
+        \item $0011 1010 \times 0001 1111$
+        \item $9 \times 10$
+        \item $0110 0111 \times 0000 1111$
+        \item $1101 0100 \times 1111 0101$
+    \end{enumerate}
+\end{problem}
+
+\begin{problem}
+    (6 marks) Divide the following, indicate if there is a type of overflow or carry over for a 8 bit binary. 
+    \begin{enumerate}[i]
+        \item $0100 1100 / 0000 0100$
+        \item $1010 1111 / 0000 1111$
+        \item $1101 0100 / 1111 0101$
+    \end{enumerate}
+\end{problem}
+
+\begin{problem}
+    (8 marks) Convert the following to IEEE $754$ single precision binary floating point representation for each of the following numbers. 
+    \begin{enumerate}[i]
+        \item $-3.96875$
+        \item $-1.5$
+        \item $1.1 \times 10^{-126}$
+        \item $2.8 \times 10^{6}$
+    \end{enumerate}
+\end{problem}
+\clearpage
+\begin{problem}
+    (8 marks) Convert the following IEEE $754$ single precision binary floating point values to $base_{10}$ number. 
+    \begin{enumerate}[i]
+        \item $0100\ 0000\ 0100\ 0000\ 0000\ 0000\ 0000\ 0000$
+        \item $0100\ 0001\ 1010\ 0000\ 0000\ 0000\ 0000\ 0000$
+        \item $1111\ 1111\ 1000\ 0000\ 0000\ 0000\ 0000\ 0000$
+        \item $1100\ 0001\ 0101\ 1010\ 0000\ 0000\ 0000\ 0000$ 
+    \end{enumerate}
+\end{problem}
+
+\begin{problem}
+    (10 marks) Fill out the following table for the following MIPS instructions, assume that it starting at address $4000$. 
+    \begin{lstlisting}[language=bash]
+    loop:       ben  $s0,$s1,out
+                sw   $s2,4($s1)
+                addu $s1,$s1,$t0
+                j loop
+    out:        ori $t2,$s7,3
+    \end{lstlisting}
+    \begin{tabular}{|p{5cm}|p{1.5cm}|p{1cm}|p{1cm}|p{1cm}|p{1cm}|p{1cm}|p{1cm}|}
+            \hline 
+            & & \multicolumn{6}{|c|}{Fields}\\ 
+            \cline{3-8} 
+             Instruction & Format & $6$ bits & $5$ bits & $5$ bits & $5$ bits & $5$ bits & $6$ bits \\
+            \hline
+            loop: bne $\$s0$,$\$s1$,out &  &  &  & & & &  \\
+            \hline
+            sw $\$s2$,$4(\$s1)$,out &  &  &  & & & &  \\ 
+            \hline
+            addu $\$s1$,$\$s1$,$\$t0$ &  &  &  & & & &  \\
+            \hline
+            j loop &  &  &  & & & &  \\
+            \hline
+            out: ori $\$t2$,$\$s7$,$3$ &  &  &  & & & &  \\
+            \hline
+        \end{tabular}   
+\end{problem}
+
+\begin{problem}
+    (5 marks) Design and show the truth table for Ex-Nor Gate using only NOT, AND and OR gates. EX-Nor game is a digital logic gate that is the reverse or complementary form of the Exclusive-OR function.  
+\end{problem}
+
+\textbf{Bonus:}
+\begin{problem}
+  (3 marks) Name two universal Quantum circuits and one error correction gate used in Quantum computers.
+\end{problem}
+\end{document}
